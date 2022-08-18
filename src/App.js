@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, CssBaseline, styled } from "@mui/material";
 import "./App.css";
 import { useState } from "react";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -6,10 +6,11 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import UpperHeader from "./components/UpperHeader";
 import DownHeader from "./components/DownHeader";
 import Filters from "./components/Filters";
-import Divider from "./components/Divider";
+import Divider from "@mui/material/Divider";
 import SentTransactions from "./components/SentTransactions";
 import ReceivedTransactions from "./components/ReceivedTransactions";
 import ShareLinksDialog from "./components/ShareLinksDialog";
+import AppDrawer from "./components/AppDrawer";
 
 const sentTransactionsData = [
   {
@@ -33,13 +34,25 @@ const receivedTransactionsData = [
   },
 ];
 
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+}));
+
 function App() {
   const [openDialog, setOpenDialog] = useState(false);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Box className="App">
-        <Box maxWidth={1200} style={{ margin: "0 auto" }}>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppDrawer />
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <DrawerHeader />
           <UpperHeader />
           <DownHeader />
           <Filters />
@@ -49,18 +62,16 @@ function App() {
             setOpenDialog={setOpenDialog}
             data={sentTransactionsData}
           />
-        </Box>
-        <Box maxWidth={1200} style={{ margin: "0 auto" }}>
           <ReceivedTransactions
             data={receivedTransactionsData}
             open={openDialog}
             setOpenDialog={setOpenDialog}
           />
+          <ShareLinksDialog
+            openDialog={openDialog}
+            setOpenDialog={setOpenDialog}
+          />
         </Box>
-        <ShareLinksDialog
-          openDialog={openDialog}
-          setOpenDialog={setOpenDialog}
-        />
       </Box>
     </LocalizationProvider>
   );

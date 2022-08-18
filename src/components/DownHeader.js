@@ -1,24 +1,23 @@
-import { InputAdornment, Stack, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import { InputAdornment, Stack, TextField } from "@mui/material";
+import React, { useState } from "react";
 import { DesktopDatePicker } from "@mui/x-date-pickers";
 import PlaceIcon from "@mui/icons-material/Place";
 import FmdBadIcon from "@mui/icons-material/FmdBad";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 
 function DownHeader() {
-    const [dateStart, setDateStart] = useState(new Date());
-    const [dateEnd, setDateEnd] = useState(new Date());
-    const handleChangeDateStart = (newValue) => {
-        setDateStart(newValue);
-      };
-      const handleChangeDateEnd = (newValue) => {
-        setDateEnd(newValue);
-      };
+  const [dateStart, setDateStart] = useState(new Date());
+  const [dateEnd, setDateEnd] = useState(new Date());
+  const handleChangeDateStart = (newValue) => {
+    setDateStart(newValue);
+  };
+  const handleChangeDateEnd = (newValue) => {
+    setDateEnd(newValue);
+  };
   return (
-    <Stack mb={4} columnGap={2} direction={"row"}>
-    <Stack columnGap={1} direction={"row"} alignItems={"center"}>
+    <Stack mb={4} columnGap={2} direction={"row"} maxWidth={1200} alignItems={"center"}>
       <TextField
-        style={{ width: 300 }}
+        style={{ width: "25%" }}
         id="outlined-basic"
         InputProps={{
           startAdornment: (
@@ -31,7 +30,7 @@ function DownHeader() {
       />
       <SwapHorizIcon style={{ width: 30, height: 30 }} />
       <TextField
-        style={{ width: 300 }}
+        style={{ width: "25%" }}
         id="outlined-basic"
         disabled
         InputProps={{
@@ -43,10 +42,9 @@ function DownHeader() {
         }}
         variant="outlined"
       />
-    </Stack>
-    <Stack direction={"row"} columnGap={2}>
       <DesktopDatePicker
         label="Start Date"
+        style={{ width: "25%" }}
         inputFormat="MM/dd/yyyy"
         value={dateStart}
         onChange={handleChangeDateStart}
@@ -60,8 +58,7 @@ function DownHeader() {
         renderInput={(params) => <TextField {...params} />}
       />
     </Stack>
-  </Stack>
-  )
+  );
 }
 
-export default DownHeader
+export default DownHeader;

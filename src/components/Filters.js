@@ -17,12 +17,12 @@ function Filters() {
     setStops(event.target.value);
   };
   return (
-    <Stack direction={"row"} mb={3} alignItems={"center"}>
+    <Stack direction={"row"} mb={3} alignItems={"center"} maxWidth={1200}>
       <Box display={"flex"} alignItems={"center"}>
         <FilterAltIcon style={{ width: 30, height: 30 }} /> All Filters
       </Box>
-      <Box>
-        <Box ml={2} sx={{ minWidth: 220 }}>
+
+        <Box ml={2} sx={{ width: "16%" }}>
           <FormControl style={{ maxHeight: 40 }} fullWidth>
             <InputLabel id="demo-simple-select-label">Stops</InputLabel>
             <Select
@@ -39,8 +39,8 @@ function Filters() {
             </Select>
           </FormControl>
         </Box>
-      </Box>
-      <Box ml={2} sx={{ minWidth: 220 }}>
+
+        <Box ml={2} sx={{ width: "16%" }}>
         <FormControl style={{ maxHeight: 40 }} fullWidth>
           <InputLabel id="demo-simple-select-label">Bags</InputLabel>
           <Select
@@ -58,7 +58,7 @@ function Filters() {
           </Select>
         </FormControl>
       </Box>
-      <Box ml={2} sx={{ minWidth: 180 }}>
+      <Box ml={2} sx={{ width: "16%" }}>
         <FormControl style={{ maxHeight: 40 }} fullWidth>
           <InputLabel id="demo-simple-select-label">Bags</InputLabel>
           <Select
@@ -77,7 +77,7 @@ function Filters() {
         </FormControl>
       </Box>
 
-      <Box ml={2} sx={{ minWidth: 180 }}>
+      <Box ml={2} sx={{ width: "16%" }}>
         <FormControl style={{ maxHeight: 40 }} fullWidth>
           <InputLabel id="demo-simple-select-label">Bags</InputLabel>
           <Select
@@ -95,7 +95,7 @@ function Filters() {
           </Select>
         </FormControl>
       </Box>
-      <Box ml={2} sx={{ minWidth: 180 }}>
+      <Box ml={2} sx={{ width: "16%" }}>
         <FormControl style={{ maxHeight: 40 }} fullWidth>
           <InputLabel id="demo-simple-select-label">Bags</InputLabel>
           <Select

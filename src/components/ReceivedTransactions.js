@@ -4,6 +4,7 @@ import {
   AccordionSummary,
   IconButton,
   Stack,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import { Box, styled } from "@mui/system";
@@ -47,7 +48,7 @@ function ReceivedTransactions({ data, setOpenDialog }) {
       {data.map((item, idx) => (
         <Accordion
           style={{
-            width: 1200,
+            maxWidth:1200,
             border: "1px solid black",
             marginBottom: 8,
           }}
@@ -84,7 +85,12 @@ function ReceivedTransactions({ data, setOpenDialog }) {
                   </IconButton>
                 </Box>
                 <Box width={50} mr={3}>
-                  {item.cost}
+                  <Tooltip
+                    title="Amounts are show in USD at the time of the transaction"
+                    placement="top"
+                  >
+                    <Typography color={"green"}>{item.cost}</Typography>
+                  </Tooltip>
                 </Box>
               </Stack>
             </Stack>
@@ -95,23 +101,30 @@ function ReceivedTransactions({ data, setOpenDialog }) {
                 <GpsFixedIcon style={{ width: 30, height: 30 }} />
                 <Box textAlign={"center"} ml={1.4}>
                   <StyleDot>.</StyleDot>
-                  <StyleDot>.</StyleDot>
+                  {/* <StyleDot>.</StyleDot> */}
                   <StyleDot></StyleDot>
                 </Box>
-                <ExpandCircleDownIcon style={{ width: 30, height: 30,fill:"green" }} />
+                <ExpandCircleDownIcon
+                  style={{ width: 30, height: 30, fill: "green" }}
+                />
               </Box>
               <Box ml={3}>
                 <Typography mb={2}>To you : 0xB…ee5…80f</Typography>
                 <Box display={"flex"} alignItems={"center"}>
                   <FileDownloadDoneIcon
-                    style={{ width: 30, height: 30, marginRight: 15,fill:"green" }}
+                    style={{
+                      width: 30,
+                      height: 30,
+                      marginRight: 15,
+                      fill: "green",
+                    }}
                   />
                   Transaction failed at: 8:19 AM
                 </Box>
                 <Typography mt={2}>From: 0xB…b95…3f37</Typography>
-                <Typography mt={2}>Transaction fees $1.23</Typography>
               </Box>
             </Stack>
+            <Typography textAlign={"start"} mt={2} ml={6.5}>Transaction fees $1.23</Typography>
           </AccordionDetails>
         </Accordion>
       ))}
